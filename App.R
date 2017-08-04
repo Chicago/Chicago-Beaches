@@ -39,7 +39,7 @@ beachNodes = read.csv("beachNodes.csv")
 ColourScale <- 'd3.scaleOrdinal().range([ "#F57C00", "#0288D1",  "#229954", "#7B1FA2", "#EC407A", "#B71C1C"]);'
 
 #list all possible options for the selection menus:
-beach_options = c("12th","31st","57th", "63rd", "Albion", "Calumet", "Foster", "Howard", "Jarvis", "Juneway","Leone", "Montrose","North Avenue", "Oak Street", "Ohio", "Osterman", "Rainbow", "Rogers", "South Shore", "39th")
+beach_options = c("12th","31st","57th", "Albion", "Foster", "Howard", "Jarvis", "Juneway","Leone", "North Avenue", "Oak Street", "Ohio", "Osterman", "Rogers", "39th")
 predictor_options <- c("Water_Temperature", "Dew_Point", "Humidity", "Rain_Intensity", "Wind_Speed",
                        "Barometric_Pressure", "Visibility", "Cloud_Cover")
 
@@ -109,365 +109,365 @@ ui <- fixedPage(
   #to test out themes, uncomment next line and comment out the line below it.
   #shinythemes::themeSelector(), 
   theme = shinytheme("yeti"),
-  tabsetPanel(
-    
-    tabPanel("Home", 
-             fixedRow(
-               column(4, align="center",
-                      tags$img(height = 110.1333,
-                               width = 166.4,
-                               src = "SmallerChicagoFlag.PNG")
-               ),
-               column(4, align="center",
-                      tags$h1("City of Chicago Beaches")
-               ),
-               column(4, align="center",
-                      tags$img(height = 110.1333,
-                               width = 166.4,
-                               src = "SmallerChicagoFlag.PNG")
-               )
-             ),
-             fixedRow(
-               column(12, #align="center",
-                      tags$h5("This is an interactive site for understanding the ", tags$i("E. coli"), " levels at your beaches in Chicago.
-                              Please visit the tabs above to access different interactive features."),
-                      tags$h5("Everyone knows and loves Chicago's beaches. What they might not know is the work that goes on behind the scenes in order to provide Chicagoans 
-                              with a timely, accurate, and efficient measure of water quality."),
-                      tags$h5("Every day during the summer, the US Geological Survey (USGS) collects water samples from each beach, and grows the samples in the lab.
-                              This is how we know the", tags$i("E. coli"), "levels in the water. However, this test takes 12 hours to run, and can be costly. By the time the
-                              test is complete, the beach day is over."),
-                      tags$h5("In order to inform the public whether the water is safe for swimming, the City of Chicago uses a combination of the", tags$i("E. coli"), "levels
-                              from the previous days, environmental factors, and knowledge of the relationships between beaches to", tags$em("predict"), "the current",
-                              tags$i("E. coli"), "levels.")
-                      )
-                      ),
-             
-             fixedRow(
-               column(4,
-                      wellPanel(tags$h5("The ", tags$strong("Map"), " tab describes the beach locations and relationships."),
-                                tags$img(height = 238.015625,
-                                         #width = 326.03125,
-                                         src = "Map1.png")),
-                      wellPanel(tags$h5("The", tags$strong("Beach Days"), "tab allows you to see how the ", tags$i("E. coli"), " cutoff level affects the number 
-                                        of swimmable beach days in the summer."),
-                                tags$img(height = 203.1061589,
-                                         #width = 281.77326289,
-                                         src = "BeachDays.PNG"))
-                      ),
-               column(4,
-                      wellPanel(tags$h5("The ", tags$strong("Predictors"), "tab allows you to explore how different elements of the weather and environment
-                                        trend with ", tags$i("E. coli"), " levels."),
-                                tags$img(height = 239.994,
-                                         #width = 286.39284,
-                                         src = "Predictors.PNG"))
-                      ),
-               column(4,
-                      wellPanel(tags$h5("The ", tags$strong("Build a Model"), "tab gives you the tools you need to build a model that predicts the ", tags$i("E. coli"), " 
-                                        levels at each beach, and see if you're as smart as you think you are."),
-                                tags$img(height = 266.0989356,
-                                         #width = 308.3321,
-                                         src = "Model.PNG")),
-                      wellPanel(tags$h5("The ", tags$strong("Network"), "tab describes the relationships that help us predict the ", tags$i("E. coli"), "  levels."),
-                                tags$img(height = 245.767189,
-                                         #width = 302.205778,
-                                         src = "Network.PNG"))
-                      )
-),
-fixedRow(
-  column(12, align="center",
-         tags$h4("__________________________________________________________________________________________________________________________________________________")
-  ),
-  column(12,
-         tags$h5("This Shiny app was built by Renel Chesak (", tags$a(href = "https://github.com/rchesak", "@rchesak"), "). For contact 
-                 information, please visit her profile on LinkedIn:", tags$a(href = "https://www.linkedin.com/in/renel-chesak-541067a1/", 
-                                                                             "linkedin.com/in/renel-chesak"), "")
-),
-column(12, align="center",
-       tags$h4("__________________________________________________________________________________________________________________________________________________")
-)
-         )
-),
+#   tabsetPanel(
+#     
+#     tabPanel("Home", 
+#              fixedRow(
+#                column(4, align="center",
+#                       tags$img(height = 110.1333,
+#                                width = 166.4,
+#                                src = "SmallerChicagoFlag.PNG")
+#                ),
+#                column(4, align="center",
+#                       tags$h1("City of Chicago Beaches")
+#                ),
+#                column(4, align="center",
+#                       tags$img(height = 110.1333,
+#                                width = 166.4,
+#                                src = "SmallerChicagoFlag.PNG")
+#                )
+#              ),
+#              fixedRow(
+#                column(12, #align="center",
+#                       tags$h5("This is an interactive site for understanding the ", tags$i("E. coli"), " levels at your beaches in Chicago.
+#                               Please visit the tabs above to access different interactive features."),
+#                       tags$h5("Everyone knows and loves Chicago's beaches. What they might not know is the work that goes on behind the scenes in order to provide Chicagoans 
+#                               with a timely, accurate, and efficient measure of water quality."),
+#                       tags$h5("Every day during the summer, the US Geological Survey (USGS) collects water samples from each beach, and grows the samples in the lab.
+#                               This is how we know the", tags$i("E. coli"), "levels in the water. However, this test takes 12 hours to run, and can be costly. By the time the
+#                               test is complete, the beach day is over."),
+#                       tags$h5("In order to inform the public whether the water is safe for swimming, the City of Chicago uses a combination of the", tags$i("E. coli"), "levels
+#                               from the previous days, environmental factors, and knowledge of the relationships between beaches to", tags$em("predict"), "the current",
+#                               tags$i("E. coli"), "levels.")
+#                       )
+#                       ),
+#              
+#              fixedRow(
+#                column(4,
+#                       wellPanel(tags$h5("The ", tags$strong("Map"), " tab describes the beach locations and relationships."),
+#                                 tags$img(height = 238.015625,
+#                                          #width = 326.03125,
+#                                          src = "Map1.png")),
+#                       wellPanel(tags$h5("The", tags$strong("Beach Days"), "tab allows you to see how the ", tags$i("E. coli"), " cutoff level affects the number 
+#                                         of swimmable beach days in the summer."),
+#                                 tags$img(height = 203.1061589,
+#                                          #width = 281.77326289,
+#                                          src = "BeachDays.PNG"))
+#                       ),
+#                column(4,
+#                       wellPanel(tags$h5("The ", tags$strong("Predictors"), "tab allows you to explore how different elements of the weather and environment
+#                                         trend with ", tags$i("E. coli"), " levels."),
+#                                 tags$img(height = 239.994,
+#                                          #width = 286.39284,
+#                                          src = "Predictors.PNG"))
+#                       ),
+#                column(4,
+#                       wellPanel(tags$h5("The ", tags$strong("Build a Model"), "tab gives you the tools you need to build a model that predicts the ", tags$i("E. coli"), " 
+#                                         levels at each beach, and see if you're as smart as you think you are."),
+#                                 tags$img(height = 266.0989356,
+#                                          #width = 308.3321,
+#                                          src = "Model.PNG")),
+#                       wellPanel(tags$h5("The ", tags$strong("Network"), "tab describes the relationships that help us predict the ", tags$i("E. coli"), "  levels."),
+#                                 tags$img(height = 245.767189,
+#                                          #width = 302.205778,
+#                                          src = "Network.PNG"))
+#                       )
+# ),
+# fixedRow(
+#   column(12, align="center",
+#          tags$h4("__________________________________________________________________________________________________________________________________________________")
+#   ),
+#   column(12,
+#          tags$h5("This Shiny app was built by Renel Chesak (", tags$a(href = "https://github.com/rchesak", "@rchesak"), "). For contact 
+#                  information, please visit her profile on LinkedIn:", tags$a(href = "https://www.linkedin.com/in/renel-chesak-541067a1/", 
+#                                                                              "linkedin.com/in/renel-chesak"), "")
+# ),
+# column(12, align="center",
+#        tags$h4("__________________________________________________________________________________________________________________________________________________")
+# )
+#          )
+# ),
+# 
+# 
+# 
+# 
+# 
+# 
+# tabPanel("Map",
+#          fixedRow(
+#            column(4, align="center",
+#                   tags$img(height = 110.1333,
+#                            width = 166.4,
+#                            src = "SmallerChicagoFlag.PNG")
+#            ),
+#            column(4, align="center",
+#                   tags$h1("Which Beaches Behave Similarly?")
+#            ),
+#            column(4, align="center",
+#                   tags$img(height = 110.1333,
+#                            width = 166.4,
+#                            src = "SmallerChicagoFlag.PNG")
+#            )
+#          ),
+#          fixedRow(
+#            column(12, align="center", 
+#                   leafletOutput('mymap2', width = 1200, height = 700)
+#            ),
+#            column(12, #align="center", 
+#                   absolutePanel(
+#                     bottom = 200, right = 0, width = 350,
+#                     draggable = TRUE,
+#                     wellPanel(tags$h4("Draggable Box"),
+#                               tags$h5("Each beach is represented on the map as a circle, and they are color-coded to show which beaches have ", tags$i("E. coli"), " 
+#                                       levels that fluctuate together. The size of the circle represents the average ", tags$i("E. coli"), " level at that beach."),
+#                               tags$h5("By understanding these
+#                                       relationships, data scientists can use only one beach out of a group to predict the ", tags$i("E. coli"), " levels at the other beaches
+#                                       in that group. This means that scientists only need to collect ", tags$i("E. coli"), " samples from one beach in the group, which can eliminate
+#                                       unnecessary spending.")),
+#                     style = "opacity: 0.92"
+#                               )
+#                               )
+#                   ),
+#          fixedRow(
+#            column(12, align="center",
+#                   tags$h4("__________________________________________________________________________________________________________________________________________________")
+#            ),
+#            column(12,
+#                   tags$h5("This Shiny app was built by Renel Chesak (", tags$a(href = "https://github.com/rchesak", "@rchesak"), "). For contact 
+#                           information, please visit her profile on LinkedIn:", tags$a(href = "https://www.linkedin.com/in/renel-chesak-541067a1/", 
+#                                                                                       "linkedin.com/in/renel-chesak"), "")
+#          ),
+#          column(12, align="center",
+#                 tags$h4("__________________________________________________________________________________________________________________________________________________")
+#          )
+#                   )
+#          ),
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# tabPanel("Beach Days",
+#          fixedRow(
+#            column(4, align="center",
+#                   tags$img(height = 110.1333,
+#                            width = 166.4,
+#                            src = "SmallerChicagoFlag.PNG")
+#            ),
+#            column(4, align="center",
+#                   tags$h1("Set Your Own Limit")
+#            ),
+#            column(4, align="center",
+#                   tags$img(height = 110.1333,
+#                            width = 166.4,
+#                            src = "SmallerChicagoFlag.PNG")
+#            )
+#          ),
+#          fixedRow(
+#            column(12, #align="center",
+#                   absolutePanel(
+#                     bottom = -375, right = 100, width = 300,
+#                     draggable = TRUE,
+#                     wellPanel(
+#                       sliderInput("slider", label = h5("", tags$i("E. coli"), "cutoff (in CFU/100mL)"), min = min(data16$Escherichia.coli), max = 2419, 
+#                                   value = 235),
+#                       tags$h5(
+#                         "The City of Chicago sets the", tags$i("E. coli"), "cutoff at no greater than 235 Colony Forming Units per 100 mL. This is a level reached 
+#                         in collaboration with microbiologists to ensure the safety of the public."),
+#                       tags$h5("Move the slider bar above to see 
+#                               how many swimmable beach days there are at different cutoff levels.")
+#                       
+#                       ),
+#                     style = "opacity: 0.92"
+#                     )),
+#            column(8, align="center",
+#                   tags$head(tags$style(type="text/css", "
+#                                        #loadmessage {
+#                                        position: fixed;
+#                                        top: 0px;
+#                                        left: 0px;
+#                                        width: 100%;
+#                                        padding: 5px 0px 5px 0px;
+#                                        text-align: center;
+#                                        font-weight: bold;
+#                                        font-size: 100%;
+#                                        color: #000000;
+#                                        background-color: #CCFF66;
+#                                        z-index: 105;
+#                                        }
+#                                        ")),
+#                   plotOutput("graph2"),
+#                   conditionalPanel(condition="$('html').hasClass('shiny-busy')",
+#                                    tags$div("Loading...",id="loadmessage"))
+#                   )
+#                   ),
+#          
+#          fixedRow(
+#            column(12, align="center",
+#                   tags$h4("__________________________________________________________________________________________________________________________________________________")
+#            ),
+#            column(12,
+#                   tags$h5("This Shiny app was built by Renel Chesak (", tags$a(href = "https://github.com/rchesak", "@rchesak"), "). For contact 
+#                           information, please visit her profile on LinkedIn:", tags$a(href = "https://www.linkedin.com/in/renel-chesak-541067a1/", 
+#                                                                                       "linkedin.com/in/renel-chesak"), "")
+#          ),
+#          column(12, align="center",
+#                 tags$h4("__________________________________________________________________________________________________________________________________________________")
+#          )
+#                   )
+#          ),
+# 
+# 
+# 
+# 
+# 
+# 
+# tabPanel("Predictors",
+#          fixedRow(
+#            column(4, align="center",
+#                   tags$img(height = 110.1333,
+#                            width = 166.4,
+#                            src = "SmallerChicagoFlag.PNG")
+#            ),
+#            column(4, align="center",
+#                   tags$h1("Pick a Predictor")
+#            ),
+#            column(4, align="center",
+#                   tags$img(height = 110.1333,
+#                            width = 166.4,
+#                            src = "SmallerChicagoFlag.PNG")
+#            ),
+#            column(12, 
+#                   absolutePanel(
+#                     bottom = -335, right = 50, width = 300,
+#                     draggable = TRUE,
+#                     wellPanel(
+#                       selectInput("predictor", tags$h5("Select a Predictor:"), choices = predictor_options),
+#                       tags$h5(
+#                         "Which elements of the environment trend with ", tags$i("E. coli"), " levels? Data scientists use 
+#                         elements that trend together to predict each other. Look for 
+#                         the predictor whose line graph peaks and valleys with the average", tags$i("E. coli"), "levels."
+#                       )
+#                       ),
+#                     
+#                     style = "opacity: 0.92"
+#                       )
+#                   ),
+#            column(7, offset=1,
+#                   tags$head(tags$style(type="text/css", "
+#                                        #loadmessage {
+#                                        position: fixed;
+#                                        top: 0px;
+#                                        left: 0px;
+#                                        width: 100%;
+#                                        padding: 5px 0px 5px 0px;
+#                                        text-align: center;
+#                                        font-weight: bold;
+#                                        font-size: 100%;
+#                                        color: #000000;
+#                                        background-color: #CCFF66;
+#                                        z-index: 105;
+#                                        }
+#                                        ")),
+#                   plotOutput("graph3"),
+#                   conditionalPanel(condition="$('html').hasClass('shiny-busy')",
+#                                    tags$div("Loading...",id="loadmessage"))
+#                   )
+#                   ),
+#          fixedRow(
+#            column(12, align="center",
+#                   tags$h4("      "),
+#                   tags$h4("__________________________________________________________________________________________________________________________________________________")
+#            ),
+#            column(12,
+#                   tags$h5("This Shiny app was built by Renel Chesak (", tags$a(href = "https://github.com/rchesak", "@rchesak"), "). For contact 
+#                           information, please visit her profile on LinkedIn:", tags$a(href = "https://www.linkedin.com/in/renel-chesak-541067a1/", 
+#                                                                                       "linkedin.com/in/renel-chesak"), "")
+#          ),
+#          column(12, align="center",
+#                 tags$h4("__________________________________________________________________________________________________________________________________________________")
+#          )
+#                   )
+#          ),
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# tabPanel("Network",
+#          fixedRow(
+#            column(4, align="center",
+#                   tags$img(height = 110.1333,
+#                            width = 166.4,
+#                            src = "SmallerChicagoFlag.PNG")
+#            ),
+#            column(4, align="center",
+#                   tags$h1("A Network of Beaches")
+#            ),
+#            column(4, align="center",
+#                   tags$img(height = 110.1333,
+#                            width = 166.4,
+#                            src = "SmallerChicagoFlag.PNG")
+#            ),
+#            column(12, #align="center",
+#                   tags$h4("Below, you can see which beaches have similar", tags$i("E. coli"), "levels. The size of the circle represents the average", 
+#                           tags$i("E. coli"), "level at that beach. Each color represents a group that fluctuates together.
+#                           The thickness of each line represents the strength of the connection between the", tags$i("E. coli"), "levels at those 2 beaches.
+#                           Understanding these relationships is a crucial part of predicting ", tags$i("E. coli"), " levels at each beach."),
+#                   column(12, align="center",
+#                          forceNetworkOutput("force")
+#                          
+#                   )
+#                   )
+#          ),
+#          
+#          fixedRow(
+#            column(12, align="center",
+#                   tags$h4("__________________________________________________________________________________________________________________________________________________")
+#            ),
+#            column(12,
+#                   tags$h5("This Shiny app was built by Renel Chesak (", tags$a(href = "https://github.com/rchesak", "@rchesak"), "). For contact 
+#                           information, please visit her profile on LinkedIn:", tags$a(href = "https://www.linkedin.com/in/renel-chesak-541067a1/", 
+#                                                                                       "linkedin.com/in/renel-chesak"), "")
+#          ),
+#          column(12, align="center",
+#                 tags$h4("__________________________________________________________________________________________________________________________________________________")
+#          )
+#                   )
+#          ),
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# tabPanel("Build a Model",
+         # fixedRow(
+         #   column(4, align="center",
+         #          tags$img(height = 110.1333,
+         #                   width = 166.4,
+         #                   src = "SmallerChicagoFlag.PNG")
+         #   ),
+         #   column(4, align="center",
+         #          tags$h1("Can You Predict Better?")
+         #   ),
+         #   column(4, align="center",
+         #          tags$img(height = 110.1333,
+         #                   width = 166.4,
+         #                   src = "SmallerChicagoFlag.PNG")
+         #   )
+         # ),
 
-
-
-
-
-
-tabPanel("Map",
          fixedRow(
-           column(4, align="center",
-                  tags$img(height = 110.1333,
-                           width = 166.4,
-                           src = "SmallerChicagoFlag.PNG")
-           ),
-           column(4, align="center",
-                  tags$h1("Which Beaches Behave Similarly?")
-           ),
-           column(4, align="center",
-                  tags$img(height = 110.1333,
-                           width = 166.4,
-                           src = "SmallerChicagoFlag.PNG")
-           )
+           column(12)
          ),
-         fixedRow(
-           column(12, align="center", 
-                  leafletOutput('mymap2', width = 1200, height = 700)
-           ),
-           column(12, #align="center", 
-                  absolutePanel(
-                    bottom = 200, right = 0, width = 350,
-                    draggable = TRUE,
-                    wellPanel(tags$h4("Draggable Box"),
-                              tags$h5("Each beach is represented on the map as a circle, and they are color-coded to show which beaches have ", tags$i("E. coli"), " 
-                                      levels that fluctuate together. The size of the circle represents the average ", tags$i("E. coli"), " level at that beach."),
-                              tags$h5("By understanding these
-                                      relationships, data scientists can use only one beach out of a group to predict the ", tags$i("E. coli"), " levels at the other beaches
-                                      in that group. This means that scientists only need to collect ", tags$i("E. coli"), " samples from one beach in the group, which can eliminate
-                                      unnecessary spending.")),
-                    style = "opacity: 0.92"
-                              )
-                              )
-                  ),
-         fixedRow(
-           column(12, align="center",
-                  tags$h4("__________________________________________________________________________________________________________________________________________________")
-           ),
-           column(12,
-                  tags$h5("This Shiny app was built by Renel Chesak (", tags$a(href = "https://github.com/rchesak", "@rchesak"), "). For contact 
-                          information, please visit her profile on LinkedIn:", tags$a(href = "https://www.linkedin.com/in/renel-chesak-541067a1/", 
-                                                                                      "linkedin.com/in/renel-chesak"), "")
-         ),
-         column(12, align="center",
-                tags$h4("__________________________________________________________________________________________________________________________________________________")
-         )
-                  )
-         ),
-
-
-
-
-
-
-
-tabPanel("Beach Days",
-         fixedRow(
-           column(4, align="center",
-                  tags$img(height = 110.1333,
-                           width = 166.4,
-                           src = "SmallerChicagoFlag.PNG")
-           ),
-           column(4, align="center",
-                  tags$h1("Set Your Own Limit")
-           ),
-           column(4, align="center",
-                  tags$img(height = 110.1333,
-                           width = 166.4,
-                           src = "SmallerChicagoFlag.PNG")
-           )
-         ),
-         fixedRow(
-           column(12, #align="center",
-                  absolutePanel(
-                    bottom = -375, right = 100, width = 300,
-                    draggable = TRUE,
-                    wellPanel(
-                      sliderInput("slider", label = h5("", tags$i("E. coli"), "cutoff (in CFU/100mL)"), min = min(data16$Escherichia.coli), max = 2419, 
-                                  value = 235),
-                      tags$h5(
-                        "The City of Chicago sets the", tags$i("E. coli"), "cutoff at no greater than 235 Colony Forming Units per 100 mL. This is a level reached 
-                        in collaboration with microbiologists to ensure the safety of the public."),
-                      tags$h5("Move the slider bar above to see 
-                              how many swimmable beach days there are at different cutoff levels.")
-                      
-                      ),
-                    style = "opacity: 0.92"
-                    )),
-           column(8, align="center",
-                  tags$head(tags$style(type="text/css", "
-                                       #loadmessage {
-                                       position: fixed;
-                                       top: 0px;
-                                       left: 0px;
-                                       width: 100%;
-                                       padding: 5px 0px 5px 0px;
-                                       text-align: center;
-                                       font-weight: bold;
-                                       font-size: 100%;
-                                       color: #000000;
-                                       background-color: #CCFF66;
-                                       z-index: 105;
-                                       }
-                                       ")),
-                  plotOutput("graph2"),
-                  conditionalPanel(condition="$('html').hasClass('shiny-busy')",
-                                   tags$div("Loading...",id="loadmessage"))
-                  )
-                  ),
          
          fixedRow(
-           column(12, align="center",
-                  tags$h4("__________________________________________________________________________________________________________________________________________________")
-           ),
-           column(12,
-                  tags$h5("This Shiny app was built by Renel Chesak (", tags$a(href = "https://github.com/rchesak", "@rchesak"), "). For contact 
-                          information, please visit her profile on LinkedIn:", tags$a(href = "https://www.linkedin.com/in/renel-chesak-541067a1/", 
-                                                                                      "linkedin.com/in/renel-chesak"), "")
-         ),
-         column(12, align="center",
-                tags$h4("__________________________________________________________________________________________________________________________________________________")
-         )
-                  )
-         ),
-
-
-
-
-
-
-tabPanel("Predictors",
-         fixedRow(
-           column(4, align="center",
-                  tags$img(height = 110.1333,
-                           width = 166.4,
-                           src = "SmallerChicagoFlag.PNG")
-           ),
-           column(4, align="center",
-                  tags$h1("Pick a Predictor")
-           ),
-           column(4, align="center",
-                  tags$img(height = 110.1333,
-                           width = 166.4,
-                           src = "SmallerChicagoFlag.PNG")
-           ),
-           column(12, 
-                  absolutePanel(
-                    bottom = -335, right = 50, width = 300,
-                    draggable = TRUE,
-                    wellPanel(
-                      selectInput("predictor", tags$h5("Select a Predictor:"), choices = predictor_options),
-                      tags$h5(
-                        "Which elements of the environment trend with ", tags$i("E. coli"), " levels? Data scientists use 
-                        elements that trend together to predict each other. Look for 
-                        the predictor whose line graph peaks and valleys with the average", tags$i("E. coli"), "levels."
-                      )
-                      ),
-                    
-                    style = "opacity: 0.92"
-                      )
-                  ),
-           column(7, offset=1,
-                  tags$head(tags$style(type="text/css", "
-                                       #loadmessage {
-                                       position: fixed;
-                                       top: 0px;
-                                       left: 0px;
-                                       width: 100%;
-                                       padding: 5px 0px 5px 0px;
-                                       text-align: center;
-                                       font-weight: bold;
-                                       font-size: 100%;
-                                       color: #000000;
-                                       background-color: #CCFF66;
-                                       z-index: 105;
-                                       }
-                                       ")),
-                  plotOutput("graph3"),
-                  conditionalPanel(condition="$('html').hasClass('shiny-busy')",
-                                   tags$div("Loading...",id="loadmessage"))
-                  )
-                  ),
-         fixedRow(
-           column(12, align="center",
-                  tags$h4("      "),
-                  tags$h4("__________________________________________________________________________________________________________________________________________________")
-           ),
-           column(12,
-                  tags$h5("This Shiny app was built by Renel Chesak (", tags$a(href = "https://github.com/rchesak", "@rchesak"), "). For contact 
-                          information, please visit her profile on LinkedIn:", tags$a(href = "https://www.linkedin.com/in/renel-chesak-541067a1/", 
-                                                                                      "linkedin.com/in/renel-chesak"), "")
-         ),
-         column(12, align="center",
-                tags$h4("__________________________________________________________________________________________________________________________________________________")
-         )
-                  )
-         ),
-
-
-
-
-
-
-
-tabPanel("Network",
-         fixedRow(
-           column(4, align="center",
-                  tags$img(height = 110.1333,
-                           width = 166.4,
-                           src = "SmallerChicagoFlag.PNG")
-           ),
-           column(4, align="center",
-                  tags$h1("A Network of Beaches")
-           ),
-           column(4, align="center",
-                  tags$img(height = 110.1333,
-                           width = 166.4,
-                           src = "SmallerChicagoFlag.PNG")
-           ),
-           column(12, #align="center",
-                  tags$h4("Below, you can see which beaches have similar", tags$i("E. coli"), "levels. The size of the circle represents the average", 
-                          tags$i("E. coli"), "level at that beach. Each color represents a group that fluctuates together.
-                          The thickness of each line represents the strength of the connection between the", tags$i("E. coli"), "levels at those 2 beaches.
-                          Understanding these relationships is a crucial part of predicting ", tags$i("E. coli"), " levels at each beach."),
-                  column(12, align="center",
-                         forceNetworkOutput("force")
-                         
-                  )
-                  )
-         ),
-         
-         fixedRow(
-           column(12, align="center",
-                  tags$h4("__________________________________________________________________________________________________________________________________________________")
-           ),
-           column(12,
-                  tags$h5("This Shiny app was built by Renel Chesak (", tags$a(href = "https://github.com/rchesak", "@rchesak"), "). For contact 
-                          information, please visit her profile on LinkedIn:", tags$a(href = "https://www.linkedin.com/in/renel-chesak-541067a1/", 
-                                                                                      "linkedin.com/in/renel-chesak"), "")
-         ),
-         column(12, align="center",
-                tags$h4("__________________________________________________________________________________________________________________________________________________")
-         )
-                  )
-         ),
-
-
-
-
-
-
-
-tabPanel("Build a Model",
-         fixedRow(
-           column(4, align="center",
-                  tags$img(height = 110.1333,
-                           width = 166.4,
-                           src = "SmallerChicagoFlag.PNG")
-           ),
-           column(4, align="center",
-                  tags$h1("Can You Predict Better?")
-           ),
-           column(4, align="center",
-                  tags$img(height = 110.1333,
-                           width = 166.4,
-                           src = "SmallerChicagoFlag.PNG")
-           )
-         ),
-         
-         fixedRow(
-           column(7, 
-                  bsAlert("alert"),
-                  leafletOutput('mymap', width = 650, height = 850)
-           ),
            
            column(5,
                   div(style = "height:-400px"),
@@ -482,27 +482,31 @@ tabPanel("Build a Model",
                                        font-weight: bold;
                                        font-size: 100%;
                                        color: #000000;
-                                       background-color: #CCFF66;
+                                       background-color: #e0e0e0;
                                        z-index: 105;
                                        }
                                        ")),
                   ###########################################################
                   wellPanel(
-                    uiOutput("Rate"),
-                    uiOutput("Box2"),
-                    actionButton(inputId = "go", label = "Update beaches (~10 sec)"),
-                    selectInput("chosen_beaches", label = tags$h5("Select which beaches will be predictive:"), beach_options, multiple=TRUE, selectize=TRUE),
+                    selectInput("chosen_beaches", label = tags$h5("Select the beaches you think will best predict the other beaches:"), beach_options, multiple=TRUE, selectize=TRUE),
+                    actionButton(inputId = "go", label = "Build Model"),
                     tags$h5(htmlOutput("results_verbiage")),
-                    tags$h5("Model Results:"),
-                    plotOutput("optimization_graph", height="150px"), #, width = "425px"), 
+                    # plotOutput("optimization_graph", height="150px"), #, width = "425px"), 
                     plotOutput("graph1", height="150px"), #, width = "425px"),
-                    tags$h6(tags$div(HTML(paste(tags$span(tags$b(style="color:green", "Hits:")), "Unsafe beach days caught by the model.", sep = " ")))),
-                    tags$h6(tags$div(HTML(paste(tags$span(tags$b(style="color:red", "False Alarms:")), "Safe beach days incorrectly flagged as unsafe, based upon the model.", sep = " "))))
+                    tags$h5(htmlOutput("results_verbiage2")),
+                    uiOutput("Rate"),
+                    uiOutput("Box2")
+                    # tags$h6(tags$div(HTML(paste(tags$span(tags$b(style="color:green", "Hits:")), "Unsafe beach days caught by the model.", sep = " ")))),
+                    # tags$h6(tags$div(HTML(paste(tags$span(tags$b(style="color:red", "False Alarms:")), "Safe beach days incorrectly flagged as unsafe, based upon the model.", sep = " "))))
                   ),
                   #########################################################
                   conditionalPanel(condition="$('html').hasClass('shiny-busy')",
-                                   tags$div("Loading...",id="loadmessage"))
-                  )
+                                   tags$div("Building your model...",id="loadmessage"))
+                  ),
+           column(7, 
+                  bsAlert("alert"),
+                  leafletOutput('mymap', width = 650, height = 850)
+           )
                   ),
          
          fixedRow(
@@ -510,13 +514,7 @@ tabPanel("Build a Model",
                   tags$h4("__________________________________________________________________________________________________________________________________________________")
            ),
            column(12,
-                  tags$h5("The algorithm used in this app was built by the City of Chicago's Department of Innovation and Technology 
-                          (", tags$a(href = "https://github.com/Chicago", "@cityofchicago"), "),
-                          and it's incorporation into this app would not have been possible without the help of 
-                          Callin Osborn (", tags$a(href = "https://github.com/CallinOsborn", "@CallinOsborn"), ")."), 
-                  tags$h5("This Shiny app was built by Renel Chesak (", tags$a(href = "https://github.com/rchesak", "@rchesak"), "). For contact 
-                          information, please visit her profile on LinkedIn:", tags$a(href = "https://www.linkedin.com/in/renel-chesak-541067a1/", 
-                                                                                      "linkedin.com/in/renel-chesak"), "")
+                  tags$h5("Copyright (c) 2017 Renel Chesak and the City of Chicago. Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions: The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.")
            ),
            column(12, align="center",
                   tags$h4("__________________________________________________________________________________________________________________________________________________")
@@ -525,9 +523,9 @@ tabPanel("Build a Model",
          )
 
 
-                  )
-
-         )
+         #          )
+         # 
+         # )
 
 
 
@@ -542,13 +540,13 @@ server <- function(input, output,session) {
   
   ####################
   #graph 1 and interactive map:
-  output$Rate = renderUI(selectInput("rate",h5("What are you interested in?"),c("Hit Rate", "False Alarm Rate"),"False Alarm Rate"))
+  # output$Rate = renderUI(selectInput("rate",h5("What are you interested in?"),c("Hit Rate", "False Alarm Rate"),"False Alarm Rate"))
   output$Box2 = renderUI(
-    if(input$rate == "Hit Rate") {sliderInput("slider2", label = NULL, min = 1,
+    if(FALSE) {sliderInput("slider2", label = NULL, min = 1,
                       max = 100, value = 95, post = "%")
     }
-    else if(input$rate == "False Alarm Rate") {sliderInput("slider_FA", label = NULL, min = 1,
-                                                   max = 10, value = 5, step= 0.2, post = "%")
+    else if(TRUE) {sliderInput("slider_FA", label = tags$h5("False Alarm Rate - Must be lower than 2% to beat our model"), min = 1,
+                                                   max = 5, value = 1.9, step= 0.1, post = "%")
     }
   )
 
@@ -578,12 +576,11 @@ server <- function(input, output,session) {
       #save the output:
       model_summary <- return_list$model_summary
       individual_beach_results <- return_list$predictions
-      
   #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^    
-  observeEvent(input$rate, {   
+  # observeEvent(input$rate, {   
       
       #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ Hit Rate Input $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-    if(input$rate == "Hit Rate") {
+    if(FALSE) {
       #create data for optimization graph (this is static after they hit the "update" button; no need to tie it to the slider):
       
       #reorder the model_summary dataframe so that "tpr" is ascending ("thresholds" breaks ties and is descending)
@@ -648,12 +645,10 @@ server <- function(input, output,session) {
         #Create label content for interactive map:
         content7 <- paste0("<strong>Beach: </strong>", #** these values change when the hit rate changes (because of the corresponding threshold change)
                            individual_beach_results_reshaped$Beach, 
-                           "<br><strong>False Alarms you called: </strong>", 
-                           individual_beach_results_reshaped$false_alarms,
-                           "<br><strong>Unsafe beach days you caught: </strong>", 
-                           individual_beach_results_reshaped$hits,
-                           "<br><strong>Unsafe beach days you missed: </strong>", 
-                           individual_beach_results_reshaped$misses
+                           "<br><strong>Accuracy: </strong>", 
+                           individual_beach_results_reshaped$hits / 
+                             (individual_beach_results_reshaped$hits + 
+                                individual_beach_results_reshaped$misses)
 
         )
 
@@ -669,8 +664,8 @@ server <- function(input, output,session) {
           # add some circles:
           addCircles(
             ~Longitude, ~Latitude,
-            radius = ~(false_alarms*20),  #NOTE: size of circle is based on number of false alarms now, and only PREDICTED (non-selected beaches) will show up
-            color = getColor(individual_beach_results_reshaped),
+            radius = ~(hits*20),  #NOTE: size of circle is based on number of false alarms now, and only PREDICTED (non-selected beaches) will show up
+            color = "blue",
             #label = content2,
             #label = ~as.character(AvgEcoli),
             label = "Click me!",
@@ -708,7 +703,7 @@ server <- function(input, output,session) {
         subset2 = data.frame(Model, result, result_count)
         
         #interactive verbiage for results 
-        if (HITS !=0){
+        if (TRUE){
         totalcost <- ((FALSE_ALARMS *1500) + (length(input$chosen_beaches) * 150 *100)) # $150 per test * 100 beach days in the summer
         cost <- (totalcost / HITS) 
         output$results_verbiage <- renderText({ paste("In order to achieve a", tags$b(percent((input$slider2 / 100), digits=0)), "hit rate, your model had to call", 
@@ -716,7 +711,7 @@ server <- function(input, output,session) {
                                                       "false alarm(s) during the summer, costing taxpayers", tags$b(currency(cost, digits=0)), "per hit, or a total of",  
                                                       tags$b(currency(totalcost, digits=0)), "over the course of the summer.") }) 
         }
-        if (HITS ==0){
+        if (FALSE){
           totalcost <- (length(input$chosen_beaches) * 150 *100) # $150 per test * 100 beach days in the summer
           output$results_verbiage <- renderText({ paste("In order to achieve a", tags$b(percent((input$slider2 / 100), digits=0)), "hit rate, your model had to call", 
                                                         tags$b(format(FALSE_ALARMS, big.mark=",", trim=TRUE)), 
@@ -750,7 +745,7 @@ server <- function(input, output,session) {
       
       #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ False Alarm Rate Input $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
       
-    else if(input$rate == "False Alarm Rate") {
+    else if(TRUE) {
       
       #create data for false alarm rate optimization graph (this is static after they hit the "update" button; no need to tie it to the slider):
       #reorder the model_summary dataframe so that "fpr" is ascending ("thresholds" breaks ties and is descending)
@@ -775,7 +770,7 @@ server <- function(input, output,session) {
       library(reshape2)
       model_summary_fpr2 <- melt(model_summary_fpr2, id.vars = c('thresholds', 'false_alarm_rate'), variable.name = 'hit_or_falsealarm', value.name = 'beach_days')
       head(model_summary_fpr2)
-      
+
       ##################################################################################################################
       # EVERYTHING HERE UPDATES WHEN THE FALSE ALARM RATE SLIDER CHANGES:
       observeEvent(input$slider_FA, { 
@@ -817,17 +812,14 @@ server <- function(input, output,session) {
         
         #______________________
         #interactive verbiage for results 
-        if (HITS !=0){
+        if (TRUE){
           totalcost <- ((FALSE_ALARMS *1500) + (length(input$chosen_beaches) * 150 *100)) # $150 per test * 100 beach days in the summer
           cost <- (totalcost / HITS) 
-          output$results_verbiage <- renderText({ paste("With a", tags$b(percent((input$slider_FA / 100), digits=0)), "false alarm rate, your model had to call", 
-                                                        tags$b(format(FALSE_ALARMS, big.mark=",", trim=TRUE)), 
-                                                        "false alarm(s) during the summer, costing taxpayers", tags$b(currency(cost, digits=0)), "per hit, or a total of",  
-                                                        tags$b(currency(totalcost, digits=0)), "over the course of the summer. With the corresponding",
-                                                        tags$b(percent((HIT_RATE), digits=0)), " hit rate, you missed",
-                                                        tags$b(format(MISSES, big.mark=",", trim=TRUE)), "unsafe beach days, putting Chicagoans at risk.") }) 
+          output$results_verbiage <- renderText({ paste("Your Accuracy: ", tags$h1(percent(HIT_RATE), digits=0)) }) 
+          output$results_verbiage2 <- renderText({ paste("False Alarms: ", tags$h3(FALSE_ALARMS, digits=0)) }) 
+          
         }
-        if (HITS ==0){
+        if (FALSE){
           totalcost <- (length(input$chosen_beaches) * 150 *100) # $150 per test * 100 beach days in the summer
           output$results_verbiage <- renderText({ paste("With a", tags$b(percent((input$slider_FA / 100), digits=0)), "false alarm rate, your model had to call", 
                                                         tags$b(format(FALSE_ALARMS, big.mark=",", trim=TRUE)), 
@@ -835,7 +827,6 @@ server <- function(input, output,session) {
                                                         tags$b(currency(totalcost, digits=0)), "over the course of the summer for all the tests run. You missed",
                                                         tags$b(format(MISSES, big.mark=",", trim=TRUE)), "unsafe beach days, putting Chicagoans at risk.") }) 
         }
-        
         ##### MAP:
         #use Callin's function to reshape the data for use in the map:
         individual_beach_results_reshaped <- my_reshape(individual_beach_results, as.numeric(threshold_for_map)) #**threshold varies based on the threshold tied to the hit rate chosen in the slider
@@ -843,15 +834,12 @@ server <- function(input, output,session) {
         #Create label content for interactive map:
         content7 <- paste0("<strong>Beach: </strong>", #** these values change when the hit rate changes (because of the corresponding threshold change)
                            individual_beach_results_reshaped$Beach, 
-                           "<br><strong>False Alarms you called: </strong>", 
-                           individual_beach_results_reshaped$false_alarms,
-                           "<br><strong>Unsafe beach days you caught: </strong>", 
-                           individual_beach_results_reshaped$hits,
-                           "<br><strong>Unsafe beach days you missed: </strong>", 
-                           individual_beach_results_reshaped$misses
+                           "<br><strong>Accuracy: </strong>", 
+                           percent(individual_beach_results_reshaped$hits / 
+                             (individual_beach_results_reshaped$hits + 
+                                individual_beach_results_reshaped$misses))
                            
         )
-        
         # create a default web map 
         map <- leaflet::leaflet(individual_beach_results_reshaped) %>% addTiles() #the add tiles argument breaks the map into tiles so it's not so hard to hold it in memory
         #customize the map:
@@ -864,8 +852,8 @@ server <- function(input, output,session) {
           # add some circles:
           addCircles(
             ~Longitude, ~Latitude,
-            radius = ~(false_alarms*20),  #NOTE: size of circle is based on number of false alarms now, and only PREDICTED (non-selected beaches) will show up
-            color = getColor(individual_beach_results_reshaped),
+            radius = ~((hits / (hits + misses)) * 1000),  #NOTE: size of circle is based on number of false alarms now, and only PREDICTED (non-selected beaches) will show up
+            color = "blue",
             #label = content2,
             #label = ~as.character(AvgEcoli),
             label = "Click me!",
@@ -897,25 +885,30 @@ server <- function(input, output,session) {
         USGS_hits = model_summary_USGS[user_index_USGS, 14]
         USGS_false_alarms = model_summary_USGS[user_index_USGS, 17]
         
-        Model <- c("Your Model", "Your Model", "USGS Model","USGS Model")
-        result <- c("Hits", "False_Alarms", "Hits", "False_Alarms")
-        result_count <- unlist(c(HITS, FALSE_ALARMS, USGS_hits, USGS_false_alarms))
-        subset2 = data.frame(Model, result, result_count)
+        # Model <- c("Your Model", "Your Model", "USGS Model","USGS Model")
+        Model <- "Your Model"
+        result <- HIT_RATE
+        # result_count <- unlist(c(HITS, FALSE_ALARMS, USGS_hits, USGS_false_alarms))
+        subset2 = data.frame(Model, result)
         
         ###### grouped bar graph for model:
-        output$graph1 <- renderPlot({ggplot(subset2, aes(x=Model, y=result_count, fill=result)) + 
-            geom_bar(position="dodge", stat = "identity")+
+        output$graph1 <- renderPlot({ggplot(subset2, aes(x=Model, y=result * 100)) + 
+            geom_bar(position="dodge", stat = "identity", width = .4)+
+            geom_hline(aes(yintercept = 38.24, linetype = "Our Model"), col = "#4c814c") +
+            scale_linetype_manual(name = NULL, values = c(2), 
+                                  guide = guide_legend(override.aes = list(color = c("#4c814c")))) +
+            ylim(c(0,50)) + 
             theme_bw() + 
-            guides(fill=FALSE) +
+            # guides(fill=FALSE) +
             theme(axis.text.x= element_text(size=15, family = "Eras")) + #angle=-30, hjust=0.05, vjust=1,
             theme(axis.text.y = element_text(size=15, family = "Eras")) +
-            #ggtitle("Model Results") +
+            #ggtitle("Your model vs. our model") +
             #theme(plot.title=element_text(size=20)) +
-            labs(y="Beach Days", x=NULL) +
-            scale_fill_manual(values=c("#FF0000", "#229954"), labels = c("False Alarms", "Hits")) + 
+            labs(y="Accuracy (%)", x=NULL) +
+            # scale_fill_manual(values=c("#FF0000", "#229954"), labels = c("False Alarms", "Hits")) + 
             #scale_fill_brewer(palette="Paired") +
             #theme(legend.title=element_text(family="Eras")) +
-            theme(axis.title.y=element_text(size=15, family = "Eras")) 
+            theme(axis.title.y=element_text(size=15, family = "Eras"))  
           #guides(fill=guide_legend(title=NULL)) +
           #theme(legend.text=element_text(family="Eras")) 
           
@@ -927,7 +920,7 @@ server <- function(input, output,session) {
       }) #these brackets are for the observeEvent sliderFA
       ################################################################################################################## 
     } #this bracket is for if they selected False Alarm Rate
-  }) #these brackets are for the observeEvent input$rate
+  # }) #these brackets are for the observeEvent input$rate
  } #this bracket is for the 'else' statement when they have selected beaches properly
 
     

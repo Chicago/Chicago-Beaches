@@ -4,7 +4,7 @@
 
 
 model_cols <- (ncol(df_model))
-
+set.seed(317)
 
 if (kFolds) {
   cat("Modeling with",num_of_folds,"fold validation\n")
@@ -123,6 +123,11 @@ if (kFolds) {
     train_balanced <- rbind(train_high, train_low[ind, ])
     trainData <- train_balanced
   }
+  
+  ## take a sample of training data because it's taking too long for shiny app
+  trainDataInd <- sample(nrow(trainData), 2000)
+  trainData <- trainData[trainDataInd,]
+  
   testData <- df_model[df_model$Date < testEnd
                        & df_model$Date > testStart, ]
   # Reduce test set to non-predictor beaches
@@ -130,7 +135,7 @@ if (kFolds) {
   testData <- testData[complete.cases(testData),] #remove NAs from test data
   print(paste0("Train set observations = ",nrow(trainData)))
   print(paste0("Test set observations = ",nrow(testData)))
-  model <- modelEcoli_1(trainData, testData,threshBegin,threshEnd,thresh)
+  model <- modelEcoli(trainData, testData,threshBegin,threshEnd,thresh)
   # p <- ggplot() 
   # print(p + 
   #         geom_smooth(aes(x = model$fpr, y = model$tpr, 
@@ -153,4 +158,7 @@ if (kFolds) {
   #         xlim(0,1) +
   #         ggtitle(title2))
    plot_data <- as.data.frame(model[-which(names(model) == "predictions")])
+   predictions <- model$predictions
+   names(predictions)[names(predictions) == "Predicted.Level"] <- "USGS.Prediction"
+   names(predictions)[names(predictions) == "predictionRF"] <- "DNAModel.Prediction"
 }

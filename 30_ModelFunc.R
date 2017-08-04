@@ -32,18 +32,19 @@ beach_choose <- function(beaches,thresh,num_of_folds){
   
   # set predictors
   
-beach_to_colnames <- setNames(c("n12th_Escherichia.coli", "n31st_Escherichia.coli", "n57th_Escherichia.coli", "n63rd_Escherichia.coli", "Albion_Escherichia.coli", "Calumet_Escherichia.coli", "Foster_Escherichia.coli", "Howard_Escherichia.coli", "Jarvis_Escherichia.coli","Juneway_Escherichia.coli", "Leone_Escherichia.coli", "Montrose_Escherichia.coli","North_Avenue_Escherichia.coli", "Oak_Street_Escherichia.coli", "Ohio_Escherichia.coli","Osterman_Escherichia.coli", "Rainbow_Escherichia.coli", "Rogers_Escherichia.coli","South_Shore_Escherichia.coli", "n39th_Escherichia.coli"),c("12th","31st","57th", "63rd", "Albion", "Calumet", "Foster", "Howard", "Jarvis", "Juneway","Leone", "Montrose", "North Avenue", "Oak Street", "Ohio", "Osterman", "Rainbow", "Rogers", "South Shore", "39th"))
+df <- df[!df$Client.ID %in% c("63rd", "Calumet", "Montrose", "Rainbow", "South Shore"),]
+df <- df[,!names(df) %in% c("n63rd_Escherichia.coli", "Calumet_Escherichia.coli", "Montrose_Escherichia.coli", "Rainbow_Escherichia.coli", "South_Shore_Escherichia.coli")]
+beach_to_colnames <- setNames(c("n12th_Escherichia.coli", "n31st_Escherichia.coli", "n57th_Escherichia.coli", "Albion_Escherichia.coli", "Foster_Escherichia.coli", "Howard_Escherichia.coli", "Jarvis_Escherichia.coli","Juneway_Escherichia.coli", "Leone_Escherichia.coli", "North_Avenue_Escherichia.coli", "Oak_Street_Escherichia.coli", "Ohio_Escherichia.coli","Osterman_Escherichia.coli", "Rogers_Escherichia.coli","n39th_Escherichia.coli"),c("12th","31st","57th", "Albion", "Foster", "Howard", "Jarvis", "Juneway","Leone", "North Avenue", "Oak Street", "Ohio", "Osterman", "Rogers", "39th"))
 beaches_rename <- as.character(beach_to_colnames[beaches])
 
 df_model <- df[, unlist(list(c("Escherichia.coli","Client.ID"),beaches_rename,
-                     c("Date", #Must use for splitting data, not included in model
-                     "Predicted.Level" #Must use for USGS model comparison, not included in model
+                     c("Date" #Must use for splitting data, not included in model
+                     # "Predicted.Level" #Must use for USGS model comparison, not included in model
   )))]
   # to run without USGS for comparison, comment out "Predicted.Level" above and uncomment next line
-  # df_model$Predicted.Level <- 1 #meaningless value
-  
+  df_model$Predicted.Level <- 1 #meaningless value
   # train/test data
-  kFolds <- TRUE #If TRUE next 4 lines will not be used but cannot be commented out
+  kFolds <- FALSE #If TRUE next 4 lines will not be used but cannot be commented out
   trainStart <- "2006-01-01"
   trainEnd <- "2015-12-31"
   testStart <- "2016-01-01"
