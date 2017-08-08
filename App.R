@@ -507,11 +507,11 @@ ui <- fixedPage(
                   bsAlert("alert"),
                   leafletOutput('mymap', width = 650, height = 850)
            )
-                  ),
+                  )
          
-           column(12,
-                  tags$h5(tags$a(href = "https://github.com/Chicago/Chicago-Beaches/blob/master/LICENSE", "View License"))
-           )
+           # column(12,
+           #        tags$h5(tags$a(href = "https://github.com/Chicago/Chicago-Beaches/blob/master/LICENSE", "View License"))
+           # )
                   
          )
 
